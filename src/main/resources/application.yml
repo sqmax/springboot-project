@@ -6,6 +6,8 @@ spring:
     url: jdbc:mysql://192.168.0.102/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
+  jackson:
+    default-property-inclusion: non_null
 server:
   context-path: /sell
 #logging:
@@ -15,3 +17,7 @@ server:
 #  file: F://日志/sell.log
 #  level:
 #    com.imooc.LoggerTest: debug
+
+wechat:
+  mpAppId: wxdcf91e9f784bfad0
+  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268

@@ -1,5 +1,6 @@
 package com.imooc.VO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**
@@ -7,6 +8,7 @@ import lombok.Data;
  * Created by SqMax on 2018/3/17.
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultVO<T> {
 
     /**错误码**/

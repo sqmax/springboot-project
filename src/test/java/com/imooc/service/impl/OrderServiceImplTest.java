@@ -17,8 +17,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by SqMax on 2018/3/19.
  */
@@ -81,7 +79,7 @@ public class OrderServiceImplTest {
     @Test
     public void cancle() throws Exception{
         OrderDTO orderDTO=orderService.findOne(ORDER_ID);
-        OrderDTO result=orderService.cancle(orderDTO);
+        OrderDTO result=orderService.cancel(orderDTO);
         Assert.assertEquals(OrderStatusEnum.CANCLE.getCode(),result.getOrderStatus());
     }
 
