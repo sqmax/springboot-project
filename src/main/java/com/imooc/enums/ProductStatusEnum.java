@@ -9,7 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
  * Created by SqMax on 2018/3/17.
  */
 @Getter
-public enum  ProductStatusEnum {
+public enum  ProductStatusEnum implements CodeEnum{
 
     UP(0,"在架"),
     DOWN(1,"下架");
@@ -21,4 +21,5 @@ public enum  ProductStatusEnum {
         this.code=code;
         this.message=message;
     }
+
 }

@@ -21,3 +21,9 @@ server:
 wechat:
   mpAppId: wxdcf91e9f784bfad0
   mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268
+#  mpAppId: wxd898fcb01713c658
+#  mpAppSecret: 29d8a650db31472aa87800e3b0d739f2
+  mchId: 1483469312
+  mchKey: 06C56A89949D617DEF52F371C357B6DB
+  keyPath: F:\\h5.p12
+  nofifyUrl: http://sqmax.natapp1.cc/sell/pay/notify

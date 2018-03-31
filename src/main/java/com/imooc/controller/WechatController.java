@@ -36,12 +36,13 @@ public class WechatController {
         //2.调用方法
         String url="http://sqmax.natapp1.cc/sell/wechat/userInfo";
         String redirectUrl=wxMpService.oauth2buildAuthorizationUrl(url,WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
-//        log.info("【微信网页授权】获取code,redirectUrl={}",redirectUrl);
+        log.info("【微信网页授权】获取code,redirectUrl={}",redirectUrl);
         return "redirect:"+redirectUrl;
     }
     @GetMapping("/userInfo")
     public String userInfo(@RequestParam("code") String code,
                          @RequestParam("state") String returnUrl){
+        log.info("hello");
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken=new WxMpOAuth2AccessToken();
         try {
             wxMpOAuth2AccessToken=wxMpService.oauth2getAccessToken(code);
@@ -50,6 +51,7 @@ public class WechatController {
             throw new SellException(ResultEnum.WECHAT_MP_ERROR.getCode(),e.getError().getErrorMsg());
         }
         String openId=wxMpOAuth2AccessToken.getOpenId();
+        log.info("【微信网页授权】获取openid,returnUrl={}",returnUrl);
         return "redirect:"+ returnUrl+"?openid="+openId;
 
     }
