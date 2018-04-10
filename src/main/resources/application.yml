@@ -3,13 +3,16 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.0.102/sell?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.0.104/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
   jackson:
     default-property-inclusion: non_null
-server:
-  context-path: /sell
+  redis:
+    host: 192.168.0.104
+    port: 6379
+#server:
+#  context-path: /sell
 #logging:
 #  pattern:
 #    console: "%d - %msg%n"
@@ -19,11 +22,20 @@ server:
 #    com.imooc.LoggerTest: debug
 
 wechat:
-  mpAppId: wxdcf91e9f784bfad0
-  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268
-#  mpAppId: wxd898fcb01713c658
-#  mpAppSecret: 29d8a650db31472aa87800e3b0d739f2
+#  mpAppId: wxdcf91e9f784bfad0
+#  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268 #测试号appId,appSecret
+  mpAppId: wxd898fcb01713c658
+  mpAppSecret: xxxxxxxxx #借用号appId,appSecret
+  openAppId: wx6ad144e54af67d87
+  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #开放平台测试号appId,appSecret
   mchId: 1483469312
-  mchKey: 06C56A89949D617DEF52F371C357B6DB
-  keyPath: F:\\h5.p12
-  nofifyUrl: http://sqmax.natapp1.cc/sell/pay/notify
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath: C:/Users/Administrator/Downloads/h5.p12
+  notifyUrl: http://sqmax.natapp1.cc/notify
+  templateId:
+    orderStatus: GoCullfix05R-rCibvoyI87ZUg50cyieKA5AyX7pPzo
+
+projectUrl:
+  wechatMpAuthorize: http://sqmax.natapp1.cc
+  wechatOpenAuthorize: http://sqmax.natapp1.cc
+  sell: http://sqmax.natapp1.cc
