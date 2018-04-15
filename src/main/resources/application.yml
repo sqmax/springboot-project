@@ -11,8 +11,8 @@ spring:
   redis:
     host: 192.168.0.104
     port: 6379
-#server:
-#  context-path: /sell
+server:
+  context-path: /sell
 #logging:
 #  pattern:
 #    console: "%d - %msg%n"
@@ -26,8 +26,10 @@ wechat:
 #  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268 #测试号appId,appSecret
   mpAppId: wxd898fcb01713c658
   mpAppSecret: xxxxxxxxx #借用号appId,appSecret
+#  openAppId: wx6ad144e54af67d87
+#  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #开放平台测试号appId,appSecret
   openAppId: wx6ad144e54af67d87
-  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #开放平台测试号appId,appSecret
+  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #借用帐号appId,appSecret
   mchId: 1483469312
   mchKey: C5245D70627C1F8E9964D494B0735025
   keyPath: C:/Users/Administrator/Downloads/h5.p12

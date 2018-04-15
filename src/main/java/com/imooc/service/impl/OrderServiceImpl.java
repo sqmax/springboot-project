@@ -69,8 +69,8 @@ public class OrderServiceImpl implements OrderService {
         for(OrderDetail orderDetail:orderDTO.getOrderDetailList()){
             ProductInfo productInfo=productService.findOne(orderDetail.getProductId());
             if(productInfo==null){
-//                throw new SellException(ResultEnum.PRODUCT_NOT_EXIT);
-                throw new ResponseBankException();
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIT);
+//                throw new ResponseBankException();
             }
             //2.计算订单总价
             orderAmount=productInfo.getProductPrice()
@@ -197,6 +197,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Page<OrderDTO> findList(Pageable pageable) {
+        Page<OrderMaster> orderMasterPage=orderMasterRepository.findAll(pageable);
+
+        List<OrderDTO> orderDTOList=OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
+
+        return new PageImpl<>(orderDTOList,pageable,orderMasterPage.getTotalElements());
+    }
+
+    @Override
     @Transactional
     public OrderDTO paid(OrderDTO orderDTO) {
         //判断订单状态
@@ -221,14 +230,5 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return orderDTO;
-    }
-
-    @Override
-    public Page<OrderDTO> findList(Pageable pageable) {
-        Page<OrderMaster> orderMasterPage=orderMasterRepository.findAll(pageable);
-
-        List<OrderDTO> orderDTOList=OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
-
-        return new PageImpl<>(orderDTOList,pageable,orderMasterPage.getTotalElements());
     }
 }

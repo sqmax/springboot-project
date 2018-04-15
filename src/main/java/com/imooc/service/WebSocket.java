@@ -23,7 +23,7 @@ public class WebSocket {
     private static CopyOnWriteArraySet<WebSocket> webSocketSet=new CopyOnWriteArraySet<>();
 
     @OnOpen
-    public void opOpen(Session session){
+    public void onOpen(Session session){
         this.session=session;
         webSocketSet.add(this);
         log.info("【websocket消息】 有新的连接，总数：{}",webSocketSet.size());
@@ -44,6 +44,7 @@ public class WebSocket {
         for(WebSocket webSocket:webSocketSet){
             log.info("【websocket消息】 广播消息，message={}",message);
             try {
+                //后端发送WebSocket消息的方式
                 webSocket.session.getBasicRemote().sendText(message);
             }catch (Exception e){
                 e.printStackTrace();
