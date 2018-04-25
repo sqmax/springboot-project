@@ -8,6 +8,9 @@ import com.imooc.exception.SellException;
 import com.imooc.repository.ProductInfoRepository;
 import com.imooc.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,16 +22,23 @@ import java.util.List;
  * Created by SqMax on 2018/3/17.
  */
 @Service
+@CacheConfig(cacheNames = "product")
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductInfoRepository repository;
 
     @Override
+    @Cacheable(key = "1234")
     public ProductInfo findOne(String productId) {
         return repository.findOne(productId);
     }
 
+    @Override
+    @CachePut(key = "1234")
+    public ProductInfo save(ProductInfo productInfo) {
+        return repository.save(productInfo);
+    }
     /**
      * 查询所有在架商品列表
      * @return
@@ -39,13 +49,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+
     public Page<ProductInfo> findAll(Pageable pageable) {
         return repository.findAll(pageable);
-    }
-
-    @Override
-    public ProductInfo save(ProductInfo productInfo) {
-        return repository.save(productInfo);
     }
 
     @Override

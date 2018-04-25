@@ -119,7 +119,7 @@
         console.log('连接关闭');
     }
     websocket.onmessage=function (ev) {
-        console.log('收到消息：'+ev.data);ll
+        console.log('收到消息：'+ev.data);
         //弹窗提醒，播放消息
         $('#myModal').modal('show');
 
