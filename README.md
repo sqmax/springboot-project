@@ -65,7 +65,7 @@
 * MySQL
 * Nginx
 * Redis                
-* Centos虚拟机部署卖家端的前端                             
+* Centos虚拟机部署买家端的前端代码                             
 * Postman模拟微信订单创建订单
 * Fiddler对手机请求抓包    
 * Natapp内网穿透    
