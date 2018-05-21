@@ -13,8 +13,10 @@
 * [项目演示](#项目演示)
     * [卖家端（PC端）](#卖家端（PC端）)
     * [买家端（手机微信端）](#买家端（手机微信端）)
-    * [买家端和卖家端的通信](#买家端和卖家端的通信)
+    * [买家端和卖家端的通信](#买家端和卖家端的通信)     
+    
 ------------
+
 ## 项目介绍  
 * 前端是由Vue.js构建的WebApp，后端由Spring Boot打造，后端的前台页面使用Bootstap+Freemarker+JQuery构建,后端和前端通过RESTful风格的接口相连。
 ![](https://github.com/sqmax/springboot-project/blob/blog/pic/34.PNG)
