@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
-    url: jdbc:mysql://192.168.0.104/sell?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
   jackson:
