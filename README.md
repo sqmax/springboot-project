@@ -3,9 +3,6 @@
 * 项目整体介绍。[http://www.sqmax.top/springboot-project/](http://www.sqmax.top/springboot-project/) 
 * 项目中设计的知识细节及难点以博客的形式整理在Wiki里。[Wiki](https://github.com/sqmax/springboot-project/wiki)
 
-
------------------
-
 ## 使用方式
 
 >下面写的刚做完项目写的，有些简略，可能有些问题，过几天再整理详细的。-2018.06.15
