@@ -17,6 +17,9 @@
 7. 浏览器访问：`http://localhost:8080/sell/seller/order/list`，就可以来到商家管理界面。
 8. 对于手机端微信公众号内访问，还要使用到内网穿透工具，由于微信里不能直接访问ip地址，还要购买域名，还涉及到挺复杂的微信调试。这里就不再介绍。可以使用postman这个工具模拟微信点餐下单。访问接口参见controller包下以Buyer开头的类。
 9. 如果想查看微信端的访问效果，可以在微信客户端访问这个链接：`http://sell.springboot.cn/`。（注意这是师兄上线的项目演示）
+如果使用电脑访问的话，可以首先访问：[http://sell.springboot.cn/#/order/](http://sell.springboot.cn/#/order/)；
+然后，按F12打开浏览器的开发者工具，点击控制台，在控制台输入：document.cookie='openid=abc123'；
+然后重新访问：[http://sell.springboot.cn](http://sell.springboot.cn)，就可以看到前端效果了。
 
 
 >关于IDEA。对于使用Eclipse的伙伴，可以尝试一下IDEA。我做这个项目也是第一次使用IDEA，感觉非常智能好用，可以参见一下这个仓库：[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)，非常好的IDEA使用教程。
