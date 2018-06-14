@@ -5,8 +5,6 @@
 
 ## 使用方式
 
->下面是刚做完项目写的理解还不是太深刻，有些简略，可能有些问题，过几天再整理详细的。-2018.06.15
-
 0. 安装环境：redis,mysql,maven。
 1. 使用命令`git clone https://github.com/sqmax/springboot-project.git`克隆到本地。
 2. 在IDEA里。File->open...，然后选择项目文件夹。
@@ -23,3 +21,5 @@
 
 
 >关于IDEA。对于使用Eclipse的伙伴，可以尝试一下IDEA。我做这个项目也是第一次使用IDEA，感觉非常智能好用，可以参见一下这个仓库：[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)，非常好的IDEA使用教程。
+
+>上面的使用方式是刚做完项目写的理解还不是太深刻，有些简略，可能有些问题，而且前端vue.js项目代码还没有放上去，这几天在进一步整理，到时会把前端vue.js代码都放上去。-2018.06.15
