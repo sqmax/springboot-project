@@ -32,12 +32,12 @@ public class SellerExceptionHandler {
         .concat("/sell/seller/login"));
     }
 
-
     @ExceptionHandler(value = SellException.class)
     @ResponseBody
     public ResultVO handlerSellerException(SellException e){
         return ResultVOUtil.error(e.getCode(),e.getMessage());
     }
+
     @ExceptionHandler(value = ResponseBankException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public void handleResponseBankException(){

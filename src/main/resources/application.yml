@@ -9,7 +9,7 @@ spring:
   jackson:
     default-property-inclusion: non_null
   redis:
-    host: 192.168.0.104
+    host: 127.0.0.1
     port: 6379
 server:
   context-path: /sell
@@ -21,6 +21,7 @@ server:
 #  level:
 #    com.imooc.LoggerTest: debug
 
+# 下面是微信相关的配置
 wechat:
 #  mpAppId: wxdcf91e9f784bfad0
 #  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268 #测试号appId,appSecret
