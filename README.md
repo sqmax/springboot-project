@@ -13,7 +13,7 @@
 >注：IDEA不要下载Community版，下载Ultimate版，付费，但网上可以很容易找到注册码。
 MySQL数据库我用的是5.7.21的版本，本项目的建表语句好像不兼容5.6的版本，建议也装5.7以上的版本。
 推荐一个比较好用的MySQL客户端图形界面：[Navicat for MySQL](https://www.navicat.com/en/download/navicat-for-mysql)，收费，有30天使用期。也可以下载低版本的，网上可以找到注册码。
-Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/download),免费。Maven远程最好改为阿里云仓库，网上有修改方式，很简单。
+Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/download),免费。Maven远程仓库最好改为阿里云仓库，网上有介绍修改方式，很简单。
 
 ## 运行方式：        
 1. 使用命令`git clone https://github.com/sqmax/springboot-project.git`将项目克隆到本地。
@@ -57,7 +57,7 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 向该域名下添加cookie。再次访问：`http://127.0.0.1`，这时就可以访问到前端界面了。如下：
 
 ![](http://p91462zt8.bkt.clouddn.com/weixin.PNG)
-8. 对于手机端微信公众号内访问，还要使用到内网穿透工具，由于微信里不能直接访问ip地址，还要购买域名，还涉及到挺复杂的微信调试。这里就不再介绍。可以使用postman这个工具模拟微信点餐下单。访问接口参见controller包下以Buyer开头的类。
+8. 对于手机端微信公众号内访问，还要使用到内网穿透工具，由于微信里不能直接访问ip地址，还要购买域名，还涉及到挺复杂的微信调试。这里就不再介绍。可以使用postman这个工具模拟微信点餐下单。访问接口参见controller包下以Buyer开头的类。         
 9. 如果想查看微信端的访问效果，可以在微信客户端访问这个链接：`http://sell.springboot.cn/`。（注意这是师兄上线的项目演示）
 如果使用电脑访问的话，可以首先访问：[http://sell.springboot.cn/#/order/](http://sell.springboot.cn/#/order/)；
 然后，按`F12`打开浏览器的开发者工具，点击控制台，在控制台输入：`document.cookie='openid=abc123'`；
