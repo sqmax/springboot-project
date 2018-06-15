@@ -21,7 +21,7 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 4. 为IDEA安装lombok插件。在IDEA里，File->Settings...->Plugin，搜索lombok，安装。项目wiki介绍日志时有提到为什么安装这个插件。
 3. 项目的配置文件在resources目录下，application.yml文件。修改MySQL数据库连接信息。我的数据库账号密码分别为root，123456，改为你的即可。
 4. 在MySQL数据库终端运行建表语句的sql脚本（或者使用刚下载的Navicat for MySQL图形化工具），本项目的建表语句为项目根路径下的sqmax.sql
-5. 启动redis。在刚才解压的Redis根目录下，双击redis-cli.exe即可运行redis服务。
+5. 启动redis。在刚才解压的Redis根目录下，双击redis-server.exe即可运行redis服务。
 6. 最后就可以启动项目了。在IDEA里以Spring Boot的方式运行SellApplication这个主类。可以看到这和我们传统的web项目启动的方式不一样，我们没有配置tomcat等之类的服务器，因为Spring Boot已将服务器引入起步依赖中了。
 7. 经过以上步骤，我们的项目应该已经可以启动起来了。访问：`http://127.0.0.1:8080/sell/seller/product/list`，即可来到我们的卖家端的商家管理系统界面。效果如下：
 
@@ -57,8 +57,8 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 向该域名下添加cookie。再次访问：`http://127.0.0.1`，这时就可以访问到前端界面了。如下：
 
 ![](http://p91462zt8.bkt.clouddn.com/weixin.PNG)
-8. 对于手机端微信公众号内访问，还要使用到内网穿透工具，由于微信里不能直接访问ip地址，还要购买域名，还涉及到挺复杂的微信调试。这里就不再介绍。可以使用postman这个工具模拟微信点餐下单。访问接口参见controller包下以Buyer开头的类。         
-9. 如果想查看微信端的访问效果，可以在微信客户端访问这个链接：`http://sell.springboot.cn/`。（注意这是师兄上线的项目演示）
+6. 对于手机端微信公众号内访问，还要使用到内网穿透工具，由于微信里不能直接访问ip地址，还要购买域名，还涉及到挺复杂的微信调试。这里就不再介绍。可以使用postman这个工具模拟微信点餐下单。访问接口参见controller包下以Buyer开头的类。         
+7. 如果想查看微信端的访问效果，可以在微信客户端访问这个链接：`http://sell.springboot.cn/`。（注意这是师兄上线的项目演示）
 如果使用电脑访问的话，可以首先访问：[http://sell.springboot.cn/#/order/](http://sell.springboot.cn/#/order/)；
 然后，按`F12`打开浏览器的开发者工具，点击控制台，在控制台输入：`document.cookie='openid=abc123'`；
 然后重新访问：[http://sell.springboot.cn](http://sell.springboot.cn)，就可以看到前端效果了。
