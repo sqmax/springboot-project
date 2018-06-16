@@ -1,71 +1,136 @@
-基于SpringBoot的微信点餐系统
+## 基于SpringBoot的微信点餐系统
+>这里只是对项目做一个整体的介绍，项目中设计的知识细节及难点以博客的形式整理在Wiki里。[Wiki](https://github.com/sqmax/springboot-project/wiki)
 
-* 项目整体介绍。[http://www.sqmax.top/springboot-project/](http://www.sqmax.top/springboot-project/) 
-* 项目中设计的知识细节及难点以博客的形式整理在Wiki里。[Wiki](https://github.com/sqmax/springboot-project/wiki)
+### 目录
+* [项目介绍](#项目介绍)
+* [项目设计](#项目设计)
+    * [角色划分](#角色划分)
+    * [功能模块划分](#功能模块划分)
+    * [部署架构](#部署架构)
+    * [数据库设计](#数据库设计)
+* [项目使用的技术栈](#项目使用的技术栈)
+* [开发环境及工具](#开发环境及工具)
+* [项目演示](#项目演示)
+    * [卖家端（PC端）](#卖家端（PC端）)
+    * [买家端（手机微信端）](#买家端（手机微信端）)
+    * [买家端和卖家端的通信](#买家端和卖家端的通信)
 
-## 安装环境：        
-1. MySQL。可以下载这个在线安装器：[https://dev.mysql.com/downloads/windows/installer/8.0.html](https://dev.mysql.com/downloads/windows/installer/8.0.html)，安装MySQL社区版。
-2. Redis。我在官网上没有找到redis的window版的下载链接，是到github下载的。下载地址：[https://github.com/servicestack/redis-windows/tree/master/downloads](https://github.com/servicestack/redis-windows/tree/master/downloads)，下载最新版redis-latest.zip，解压即可。可以在解压后的根目录下看到redis-server.exe文件，双击即可启动redis服务器。
-3. Nginx。下载地址：[http://nginx.org/en/download.html](http://nginx.org/en/download.html)。下载的zip压缩包，解压后根目录下有nginx.exe文件，双击即可启动nginx服务器。
-4. IDEA。下载地址：[https://www.jetbrains.com/idea/download/#section=windows](https://www.jetbrains.com/idea/download/#section=windows)
-4. JDK1.8+、maven、IDEA。这些都是java开发的常用工具，就不做解释。
+---
 
->注：IDEA不要下载Community版，下载Ultimate版，付费，但网上可以很容易找到注册码。
-MySQL数据库我用的是5.7.21的版本，本项目的建表语句好像不兼容5.6的版本，建议也装5.7以上的版本。
-推荐一个比较好用的MySQL客户端图形界面：[Navicat for MySQL](https://www.navicat.com/en/download/navicat-for-mysql)，收费，有30天使用期。也可以下载低版本的，网上可以找到注册码。
-Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/download),免费。Maven远程仓库最好改为阿里云仓库，网上有介绍修改方式，很简单。
+## 项目介绍  
+* 前端是由Vue.js构建的WebApp，后端由Spring Boot打造，后端的前台页面使用Bootstap+Freemarker+JQuery构建,后端和前端通过RESTful风格的接口相连。
+![](http://p91462zt8.bkt.clouddn.com/34.PNG)
 
-## 运行方式：        
-1. 使用命令`git clone https://github.com/sqmax/springboot-project.git`将项目克隆到本地。
-2. 将项目导入IDEA。在IDEA里，File->open...，然后选择项目文件夹（springboot-project）。如果是初次使用spring boot，这个过程可能会有点久，需要下载许多依赖的jar包。
-4. 为IDEA安装lombok插件。在IDEA里，File->Settings...->Plugin，搜索lombok，安装。项目wiki介绍日志时有提到为什么安装这个插件。
-3. 项目的配置文件在resources目录下，application.yml文件。修改MySQL数据库连接信息。我的数据库账号密码分别为root，123456，改为你的即可。
-4. 在MySQL数据库终端运行建表语句的sql脚本（或者使用刚下载的Navicat for MySQL图形化工具），本项目的建表语句为项目根路径下的sqmax.sql
-5. 启动redis。在刚才解压的Redis根目录下，双击redis-server.exe即可运行redis服务。
-6. 最后就可以启动项目了。在IDEA里以Spring Boot的方式运行SellApplication这个主类。可以看到这和我们传统的web项目启动的方式不一样，我们没有配置tomcat等之类的服务器，因为Spring Boot已将服务器引入起步依赖中了。
-7. 经过以上步骤，我们的项目应该已经可以启动起来了。访问：`http://127.0.0.1:8080/sell/seller/product/list`，即可来到我们的卖家端的商家管理系统界面。效果如下：
+* 数据库方面使用Spring Boot+JPA，兼顾Spring Boot+Mybatis；缓存方面使用Spring Boot+Redis；基于Redis,应对分布式Session和分布式锁；消息推送方面，使用WebSocket。
+![](http://p91462zt8.bkt.clouddn.com/21.PNG)
 
-![](http://p91462zt8.bkt.clouddn.com/PC.PNG)
+* 这是一个基于微信的点餐系统，所以还涉及许多微信相关的特性，如微信扫码登陆，微信模板消息推送和微信支付和退款。
 
+## 项目设计
 
-## 访问买家的前端界面
-1. 项目的前后端是完全分离的，买家端前端的代码在另一个仓库，使用`git clone https://github.com/sqmax/vuejs-project.git`下载前端项目，其中项目根路径（vuejs-project）下的dist目录就是前端编译后的代码。
-2. 修改nginx的配置文件，让nginx可以找到前端代码。在nginx根目录下的conf目录下有一个nginx.conf文件，它就是我们要修改的配置文件，其中有下面一段：
+### 角色划分
+* 卖家（手机端）：由微信公众号提供的一个服务。
+* 卖家（PC端）：一个简单的商家管理系统
 
-```
- server {
-        listen       80;
-        server_name  localhost;
+### 功能模块划分
+* 功能分析   
+    ![](http://p91462zt8.bkt.clouddn.com/35.PNG)   
+* 关系图           
+    ![](http://p91462zt8.bkt.clouddn.com/36.PNG)   
 
-        #charset koi8-r;
-
-        #access_log  logs/host.access.log  main;
-
-        location / {
-            root   F:\vuejs-project\dist; #前端资源路径
-            index  index.html index.htm;
-        }
-		location /sell/ {
-			proxy_pass http://127.0.0.1:8080/sell/;
-		}
-
-```
-
-上面的`F:\vuejs-project\dist;`该为你刚才git clone下的前端项目的dist目录。
-
-4. 双击nginx.exe启动nginx服务器，如果已启动过，命令行进入nginx的根目录，输入`nginx -s reload`重启nginx服务器。
-5. 浏览器访问：`http://127.0.0.1/#/order/`，这是会出现空白界面，按F2打开浏览器的开发者工具，在浏览器的控制台输入`document.cookie='abc123'`
-向该域名下添加cookie。再次访问：`http://127.0.0.1`，这时就可以访问到前端界面了。如下：
-
-![](http://p91462zt8.bkt.clouddn.com/weixin.PNG)
-6. 对于手机端微信公众号内访问，还要使用到内网穿透工具，由于微信里不能直接访问ip地址，还要购买域名，还涉及到挺复杂的微信调试。这里就不再介绍。可以使用postman这个工具模拟微信点餐下单。访问接口参见controller包下以Buyer开头的类。         
-7. 如果想查看微信端的访问效果，可以在微信客户端访问这个链接：`http://sell.springboot.cn/`。（注意这是师兄上线的项目演示）
-如果使用电脑访问的话，可以首先访问：[http://sell.springboot.cn/#/order/](http://sell.springboot.cn/#/order/)；
-然后，按`F12`打开浏览器的开发者工具，点击控制台，在控制台输入：`document.cookie='openid=abc123'`；
-然后重新访问：[http://sell.springboot.cn](http://sell.springboot.cn)，就可以看到前端效果了。
+### 部署架构
+* 买家端在手机端，卖家端在PC端，两端都会发出数据请求，请求首先到达nginx服务器，如果请求的是后端接口，nginx服务器会进行一个转发，转发到后面的Tomcat服务器，即我们的Java项目所在，如果这个接口作了缓存，那么就会访问redis服务器，如果没有缓存，就会访问我们的MySQL数据库。值得注意的是我们的应用是支持分布式部署的，也就是说图上的Tomcat表示的是多台服务器，多个应用。
+    ![](http://p91462zt8.bkt.clouddn.com/37.PNG)
+### 数据库设计
+*  共5个表，表之间的关系如下，其中商品表存放的就是商品的名称，价格库存，图片链接等信息；类目表含有类目id,类目名字等信息，一个类目下有多种商品，类目表和商品表之间是一对多的关系；订单详情表含有购买的商品名称，数量，所属订单的订单号等信息；订单主表包含包含该订单的订单号，买家的信息，订单的支付状态等信息，订单主表和订单详情表之间是一对多的关系；最后是卖家信息表，存放的卖家的账号和密码等信息，作为卖家后台管理的权限认证。    
+    ![](http://p91462zt8.bkt.clouddn.com/38.PNG)       
 
 
->关于IDEA。对于使用Eclipse的伙伴，可以尝试一下IDEA。我做这个项目也是第一次使用IDEA，感觉非常智能好用，可以参见一下这个仓库：[https://github.com/judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial)，非常好的IDEA使用教程。
+## 项目使用的主要技术栈
+* SpringBoot的相关特性
+    * SpringBoot+JPA
+    * SpringBoot+Redis
+    * SpringBoot+WebSocket
+    
+* 微信相关特征
+    * 微信支付、退款
+    * 微信授权登陆
+    * 微信模板消息推送
+    * 使用微信相关的开源SDK
+* 利用Redis应用分布式Session和锁
+    * 对用户的登陆信息使用分布式Session存储
+    * 利用一个秒杀红包的例子，来对Redis分布式锁进行详细的说明
 
->关于前端。前端的vue.js项目，我也没有学习，我只是拿来做演示，有兴趣的可以到慕课网学习。
+## 开发环境及工具
+* IDEA   
+* Maven   
+* Git   
+* MySQL
+* Nginx
+* Redis                
+* Postman模拟微信订单创建订单
+* Fiddler对手机请求抓包    
+* Natapp内网穿透       
+* Apache ab模拟高并发，抢红包
+
+## 项目演示   
+
+### 卖家端（PC端）  
+
+浏览器输入授权路径,进入微信扫码登陆系统页面         
+
+![](http://p91462zt8.bkt.clouddn.com/24.PNG)                                                         
+
+登陆后，从左侧导航栏可以看到有四项【订单】，【商品】，【类目】，【登出】，右侧是卖家管理系统的首页，也即【订单】界面。   
+
+![](http://p91462zt8.bkt.clouddn.com/25.PNG)   
+
+ 对每项订单有【取消】和【详情】操作。点击【详情】来查看订单详情，来到下面的界面：
+ 
+ ![](http://p91462zt8.bkt.clouddn.com/28.PNG)
+ 
+ 我们可以选择【完结订单】或【取消订单】。       
+
+【商品】和【商品类目】下均有两项操作：【列表】【新增】。      
+下面以【商品】栏为例演示。     
+点击商品->列表可以查看商品的详情，可以看到对每件商品又有【修改】和【上架】/【下架】操作 。       
+
+![](http://p91462zt8.bkt.clouddn.com/26.PNG)
+
+点击商品->新增来新增商品        
+ ![](http://p91462zt8.bkt.clouddn.com/23.PNG)     
+ 
+### 买家端（手机微信端）
+买家端是基于微信公众号的点餐app。      
+
+![](http://p91462zt8.bkt.clouddn.com/28.jpg)
+
+选购好商品后就可以去结算。
+
+![](http://p91462zt8.bkt.clouddn.com/30.jpg)
+
+结算完成，可以看到一条微信支付凭证消息。
+
+![](http://p91462zt8.bkt.clouddn.com/31.jpg)
+
+可以选择查看账单。
+
+![](http://p91462zt8.bkt.clouddn.com/32.jpg)
+
+### 买家端和卖家端的通信
+因为我是借用的微信公众账号，买家端和卖家端不能连调，我这里用Postman这个工具，发送一条post请求，来模拟微信下单。这时卖家端首页，即【订单】页面就会弹出一个窗口，并播放音乐。   
+
+![](http://p91462zt8.bkt.clouddn.com/27.PNG)  
+
+点击关闭按钮，在订单页面找到找到新下的订单，点击【详情】来到订单详情界面，点击【完结订单】按钮。
+
+![](http://p91462zt8.bkt.clouddn.com/33.PNG)
+
+这时微信那边就会收到如下的模板消息。   
+
+![](http://p91462zt8.bkt.clouddn.com/29.jpg)
+
+
+
+
 
