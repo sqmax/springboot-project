@@ -1,7 +1,7 @@
 基于SpringBoot的微信点餐系统
 
 * 项目整体介绍。[http://www.sqmax.top/springboot-project/](http://www.sqmax.top/springboot-project/) 
-* 项目中设计的知识细节及难点以博客的形式整理在Wiki里。[Wiki](https://github.com/sqmax/springboot-project/wiki)
+* 项目中涉及的知识细节及难点以博客的形式整理在Wiki里。[Wiki](https://github.com/sqmax/springboot-project/wiki)
 
 ## 安装环境：        
 1. MySQL。可以下载这个在线安装器：[https://dev.mysql.com/downloads/windows/installer/8.0.html](https://dev.mysql.com/downloads/windows/installer/8.0.html)，安装MySQL社区版。
