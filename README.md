@@ -54,7 +54,7 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 上面的`F:\vuejs-project\dist;`该为你刚才git clone下的前端项目的dist目录。
 
 4. 双击nginx.exe启动nginx服务器，如果已启动过，命令行进入nginx的根目录，输入`nginx -s reload`重启nginx服务器。
-5. 浏览器访问：`http://127.0.0.1/#/order/`，这是会出现空白界面，按F2打开浏览器的开发者工具，在浏览器的控制台输入`document.cookie='abc123'`
+5. 浏览器访问：`http://127.0.0.1/#/order/`，这是会出现空白界面，按F2打开浏览器的开发者工具，在浏览器的控制台输入`document.cookie='openid=abc123'`
 向该域名下添加cookie。再次访问：`http://127.0.0.1`，这时就可以访问到前端界面了。如下：
 
 ![](http://p91462zt8.bkt.clouddn.com/weixin.PNG)
