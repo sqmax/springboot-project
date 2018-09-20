@@ -3,7 +3,7 @@
 * 项目整体介绍。[http://www.sqmax.top/springboot-project/](http://www.sqmax.top/springboot-project/) 
 * 项目中涉及的知识细节及难点以博客的形式整理在Wiki里。[Wiki](https://github.com/sqmax/springboot-project/wiki)
 
-## 安装环境：        
+## 运行环境：        
 1. MySQL。可以下载这个在线安装器：[https://dev.mysql.com/downloads/windows/installer/8.0.html](https://dev.mysql.com/downloads/windows/installer/8.0.html)，安装MySQL社区版。
 2. Redis。我在官网上没有找到redis的window版的下载链接，是到github下载的。下载地址：[https://github.com/servicestack/redis-windows/tree/master/downloads](https://github.com/servicestack/redis-windows/tree/master/downloads)，下载最新版redis-latest.zip，解压即可。可以在解压后的根目录下看到redis-server.exe文件，双击即可启动redis服务器。
 3. Nginx。下载地址：[http://nginx.org/en/download.html](http://nginx.org/en/download.html)。下载的zip压缩包，解压后根目录下有nginx.exe文件，双击即可启动nginx服务器。
