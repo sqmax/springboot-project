@@ -58,7 +58,7 @@ public class PayServiceImpl implements PayService{
         //2.支付状态
         //3. 支付金额
         //4. 支付人（下单人==支付人）
-        PayResponse payResponse=bestPayService.asyncNotify(notifyData);
+        PayResponse payResponse=bestPayService.asyncNotify(notifyData);//可以完成1、2两步
         log.info("【微信支付 异步通知】，payResponse={}",JsonUtil.toJson(payResponse));
 
         //查询订单

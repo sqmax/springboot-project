@@ -42,12 +42,11 @@ public class WechatController {
         String url=projectUrlConfig.getWechatMpAuthorize()+"/sell/wechat/userInfo";
         String redirectUrl=wxMpService.oauth2buildAuthorizationUrl(url,WxConsts.OAUTH2_SCOPE_BASE, URLEncoder.encode(returnUrl));
         log.info("【微信网页授权】获取code,redirectUrl={}",redirectUrl);
-        return "redirect:"+redirectUrl;
+        return "redirect:"+redirectUrl;//重定向到下面一个方法
     }
     @GetMapping("/userInfo")
     public String userInfo(@RequestParam("code") String code,
                          @RequestParam("state") String returnUrl){
-        log.info("hello");
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken=new WxMpOAuth2AccessToken();
         try {
             wxMpOAuth2AccessToken=wxMpService.oauth2getAccessToken(code);
@@ -59,8 +58,11 @@ public class WechatController {
         log.info("【微信网页授权】获取openid,returnUrl={}",returnUrl);
         return "redirect:"+ returnUrl+"?openid="+openId;
 
-    }
+    }//以上两个方法是SDK方式微信网页授权的过程，
+    // 访问http://sqmax.natapp1.cc/sell/wechat/authorize?returnUrl=http://www.imooc.com，
+    //最终将会跳转到这个链接：http://www.imooc.com?openid={openid}
 
+    //微信登陆
     @GetMapping("/qrAuthorize")
     public String qrAuthorize(@RequestParam("returnUrl") String returnUrl){
         String url=projectUrlConfig.getWechatOpenAuthorize()+"/sell/wechat/userInfo";
