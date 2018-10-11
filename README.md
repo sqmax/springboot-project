@@ -12,8 +12,8 @@
 
 >注：IDEA不要下载Community版，下载Ultimate版。
 MySQL数据库我用的是5.7.21的版本，本项目的建表语句好像不兼容5.6的版本，建议也装5.7以上的版本。
-推荐一个比较好用的MySQL客户端：[Navicat for MySQL](https://www.navicat.com/en/download/navicat-for-mysql)，收费，有30天使用期。也可以下载低版本的，网上可以找到注册码。
-Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/download),免费。Maven远程仓库最好改为阿里云仓库，网上有介绍修改方式，很简单。
+推荐一个比较好用的MySQL客户端：[Navicat for MySQL](https://www.navicat.com/en/download/navicat-for-mysql)。
+Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/download)。Maven远程仓库最好改为阿里云仓库，网上有介绍修改方式，很简单。
 
 ## 运行方式：        
 1. 使用命令`git clone https://github.com/sqmax/springboot-project.git`将项目克隆到本地。
