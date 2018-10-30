@@ -32,7 +32,7 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 1. 项目的前后端是完全分离的，买家端前端的代码在另一个仓库，使用`git clone https://github.com/sqmax/vuejs-project.git`下载前端项目，其中项目根路径（vuejs-project）下的dist目录就是前端编译后的代码。
 2. 修改nginx的配置文件，让nginx可以找到前端代码。在nginx根目录下的conf目录下有一个nginx.conf文件，它就是我们要修改的配置文件，其中有下面一段：
 
-```
+```xml
  server {
         listen       80;
         server_name  localhost;
@@ -45,9 +45,9 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
             root   F:\vuejs-project\dist; #前端资源路径
             index  index.html index.htm;
         }
-		location /sell/ {
-			proxy_pass http://127.0.0.1:8080/sell/;
-		}
+	location /sell/ {
+		proxy_pass http://127.0.0.1:8080/sell/;
+	}
 
 ```
 
