@@ -8,7 +8,7 @@
 2. Redis。下载地址：[https://github.com/servicestack/redis-windows/tree/master/downloads](https://github.com/servicestack/redis-windows/tree/master/downloads)，下载最新版redis-latest.zip，解压即可。可以在解压后的根目录下看到redis-server.exe文件，双击即可启动redis服务器。
 3. Nginx。下载地址：[http://nginx.org/en/download.html](http://nginx.org/en/download.html)。下载的zip压缩包，解压后根目录下有nginx.exe文件，双击即可启动nginx服务器。
 4. IDEA。下载地址：[https://www.jetbrains.com/idea/download/#section=windows](https://www.jetbrains.com/idea/download/#section=windows)
-4. JDK1.8+、maven、IDEA。这些都是java开发的常用工具，就不做解释。
+4. JDK1.8+、maven、IDEA。
 
 >注：IDEA不要下载Community版，下载Ultimate版。
 MySQL数据库我用的是5.7.21的版本，本项目的建表语句好像不兼容5.6的版本，建议也装5.7以上的版本。
