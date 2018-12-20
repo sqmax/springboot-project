@@ -25,7 +25,7 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 6. 最后就可以启动项目了。在IDEA里以Spring Boot的方式运行SellApplication这个主类。可以看到这和我们传统的web项目启动的方式不一样，我们没有配置tomcat等之类的服务器，因为Spring Boot已将服务器引入起步依赖中了。
 7. 经过以上步骤，我们的项目应该已经可以启动起来了。访问：`http://127.0.0.1:8080/sell/seller/product/list`，即可来到我们的卖家端的商家管理系统界面。效果如下：
 
-![](http://p91462zt8.bkt.clouddn.com/PC.PNG)
+![](https://i.postimg.cc/ZnsmMkWM/PC.png)
 
 
 ## 访问买家的前端界面
@@ -57,7 +57,7 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 5. 浏览器访问：`http://127.0.0.1/#/order/`，这是会出现空白界面，按F2打开浏览器的开发者工具，在浏览器的控制台输入`document.cookie='openid=abc123'`
 向该域名下添加cookie。再次访问：`http://127.0.0.1`，这时就可以访问到前端界面了。如下：
 
-![](http://p91462zt8.bkt.clouddn.com/weixin.PNG)
+![](https://i.postimg.cc/MG0S8fcR/weixin.png)
 6. 对于手机端微信公众号内访问，还要使用到内网穿透工具，由于微信里不能直接访问ip地址，还要购买域名，还涉及到挺复杂的微信调试。这里就不再介绍。可以使用postman这个工具模拟微信点餐下单。访问接口参见controller包下以Buyer开头的类。         
 7. 如果想查看微信端的访问效果，可以在微信客户端访问这个链接：`http://sell.springboot.cn/`。（注意这是师兄上线的项目演示）
 如果使用电脑访问的话，可以首先访问：[http://sell.springboot.cn/#/order/](http://sell.springboot.cn/#/order/)；
