@@ -19,9 +19,11 @@
 
 ## 项目介绍  
 * 前端是由Vue.js构建的WebApp，后端由Spring Boot打造，后端的前台页面使用Bootstap+Freemarker+JQuery构建,后端和前端通过RESTful风格的接口相连。
+
 ![34.png](https://i.postimg.cc/8PksXD0t/34.png)
 
-* 数据库方面使用Spring Boot+JPA，兼顾Spring Boot+Mybatis；缓存方面，使用Spring Boot+Redis；基于Redis，应对分布式Session和锁；消息推送方面，使用WebSocket。
+* 数据库方面使用Spring Boot+JPA，兼顾Spring Boot+Mybatis；缓存方面，使用Spring Boot+Redis；基于Redis，应对分布式Session和锁；消息推送方面，使用WebSocket。      
+
 ![21.png](https://i.postimg.cc/Vv80kC48/21.png)
 
 * 这是一个基于微信的点餐系统，所以还涉及许多微信相关的特性，如微信扫码登陆，微信模板消息推送和微信支付和退款。
