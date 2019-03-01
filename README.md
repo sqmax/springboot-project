@@ -69,3 +69,6 @@ Redis客户端图形界面：[Redis Desktop Manager](https://redisdesktop.com/do
 
 >关于前端。前端的vue.js项目，我也没有学习，我只是拿来做演示，有兴趣的可以到慕课网学习。
 
+## 慕课网地址：				
+>[Spring Boot 企业微信点餐系统](https://coding.imooc.com/learn/list/117.html)	      
+>[Vue.js 2.5 + cube-ui 重构饿了么 App](https://coding.imooc.com/class/74.html)
