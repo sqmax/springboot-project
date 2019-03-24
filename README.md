@@ -49,10 +49,10 @@
 
 
 ## 项目使用的主要技术栈
-* SpringBoot的相关特性
-    * SpringBoot+JPA
-    * SpringBoot+Redis
-    * SpringBoot+WebSocket
+* Spring Boot的相关特性
+    * Spring Boot+JPA
+    * Spring Boot+Redis
+    * Spring Boot+WebSocket
     
 * 微信相关特征
     * 微信支付、退款
@@ -73,7 +73,7 @@
 * Postman模拟微信订单创建订单
 * Fiddler对手机请求抓包    
 * Natapp内网穿透       
-* Apache ab模拟高并发，抢红包
+* Apache ab模拟高并发，抢购一个商品
 
 ## 项目演示   
 
@@ -95,7 +95,7 @@
 
 【商品】和【商品类目】下均有两项操作：【列表】【新增】。      
 下面以【商品】栏为例演示。     
-点击商品->列表可以查看商品的详情，可以看到对每件商品又有【修改】和【上架】/【下架】操作 。       
+点击【商品】->【列表】可以查看商品的详情，可以看到对每件商品又有【修改】和【上架】/【下架】操作 。       
 
 ![26.png](http://wx3.sinaimg.cn/large/0072Njp2gy1fye91jz0sij30m80bwjv3.jpg)
 
