@@ -36,16 +36,16 @@
 
 ### 功能模块划分
 * 功能分析   
-    ![35.png](http://wx3.sinaimg.cn/large/0072Njp2gy1fye8s42c5fj30jh070glo.jpg)   
+    ![35.png](screenshoot/35.jpg)   
 * 关系图           
-    ![36.png](http://wx1.sinaimg.cn/large/0072Njp2gy1fye8s4ekm9j30kv0armxw.jpg)   
+    ![36.png](screenshoot/36.jpg)   
 
 ### 部署架构
 * 买家端在手机端，卖家端在PC端，两端都会发出数据请求，请求首先到达nginx服务器，如果请求的是后端接口，nginx服务器会进行一个转发，转发到后面的Tomcat服务器，即我们的Java项目所在，如果这个接口作了缓存，那么就会访问redis服务器，如果没有缓存，就会访问我们的MySQL数据库。值得注意的是我们的应用是支持分布式部署的，也就是说图上的Tomcat表示的是多台服务器，多个应用。
-    ![37.png](http://wx4.sinaimg.cn/large/0072Njp2gy1fye8w31cqlj30j908jwez.jpg)
+    ![37.png](screenshoot/37.jpg)
 ### 数据库设计
 *  共5个表，表之间的关系如下，其中商品表存放的就是商品的名称、价格、库存、图片链接等信息；类目表含有类目id、类目名字等信息，一个类目下有多种商品，类目表和商品表之间是一对多的关系；订单详情表含有购买的商品名称、数量、所属订单的订单号等信息；订单主表包含包含该订单的订单号、买家的信息、订单的支付状态等信息，订单主表和订单详情表之间是一对多的关系；最后是卖家信息表，存放的卖家的账号和密码等信息，作为卖家后台管理的权限认证。   
-    ![38.png](http://wx2.sinaimg.cn/large/0072Njp2gy1fye8s55e98j30hs08774e.jpg)       
+    ![38.png](screenshoot/38.jpg)       
 
 
 ## 项目使用的主要技术栈
@@ -81,15 +81,15 @@
 
 浏览器输入授权路径,进入微信扫码登陆系统页面         
 
-![24.png](http://wx1.sinaimg.cn/large/0072Njp2gy1fye8zhfpupj308c04hglu.jpg)                                                         
+![24.png](screenshoot/24.jpg)                                                         
 
 登陆后，从左侧导航栏可以看到有四项【订单】、【商品】、【类目】、【登出】，右侧是卖家管理系统的首页，也即【订单】界面。   
 
-![25.png](http://wx2.sinaimg.cn/large/0072Njp2gy1fye8zhulfpj30m80b9jvh.jpg)   
+![25.png](screenshoot/25.jpg)   
 
  对每项订单有【取消】和【详情】操作。点击【详情】来查看订单详情，来到下面的界面：
  
- ![28.png](http://wx4.sinaimg.cn/large/0072Njp2gy1fye8zi8eqwj30m80bwq3x.jpg)
+ ![28.png](screenshoot/28.jpg)
  
  我们可以选择【完结订单】或【取消订单】。       
 
@@ -97,40 +97,40 @@
 下面以【商品】栏为例演示。     
 点击【商品】->【列表】可以查看商品的详情，可以看到对每件商品又有【修改】和【上架】/【下架】操作 。       
 
-![26.png](http://wx3.sinaimg.cn/large/0072Njp2gy1fye91jz0sij30m80bwjv3.jpg)
+![26.png](screenshoot/26.jpg)
 
 点击商品->新增来新增商品        
- ![23.png](http://wx2.sinaimg.cn/large/0072Njp2gy1fye91jl9fuj30go0bm74q.jpg)     
+ ![23.png](screenshoot/23.jpg)     
  
 ### 买家端（手机微信端）
 买家端是基于微信公众号的点餐app。      
 
-![29.png](http://wx2.sinaimg.cn/large/0072Njp2gy1fye9a14qghj308c0es0to.jpg)
+![29.png](screenshoot/29.jpg)
 
 选购好商品后就可以去结算。
 
-![30.png](http://wx1.sinaimg.cn/large/0072Njp2gy1fye9a1gidxj308c07bq35.jpg)
+![30.png](screenshoot/30.jpg)
 
 结算完成，可以看到一条微信支付凭证消息。
 
-![31.png](http://wx4.sinaimg.cn/large/0072Njp2gy1fye9a1wva9j308c0653yg.jpg)
+![31.png](screenshoot/31.jpg)
 
 可以选择查看账单。
 
-![32.png](http://wx3.sinaimg.cn/large/0072Njp2gy1fye9a28nusj308c0es750.jpg)
+![32.png](screenshoot/32.jpg)
 
 ### 买家端和卖家端的通信
 因为我是借用的微信公众账号，买家端和卖家端不能连调，我这里用Postman这个工具，发送一条post请求，来模拟微信下单。这时卖家端首页，即【订单】页面就会弹出一个窗口，并播放音乐。   
 
-![27.png](http://wx3.sinaimg.cn/large/0072Njp2gy1fye9dwirtwj30m80b7421.jpg)  
+![27.png](screenshoot/27.jpg)  
 
 点击关闭按钮，在订单页面找到找到新下的订单，点击【详情】来到订单详情界面，点击【完结订单】按钮。
 
-![33.png](http://wx4.sinaimg.cn/large/0072Njp2gy1fye9dwwj2sj30m80bwt9p.jpg)
+![33.png](screenshoot/33.jpg)
 
 这时微信那边就会收到如下的模板消息。   
 
-![42.png](http://wx1.sinaimg.cn/large/0072Njp2gy1fye9dxu453j308c06ajrj.jpg)
+![42.png](screenshoot/42.jpg)
 
 
 
